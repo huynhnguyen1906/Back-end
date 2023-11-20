@@ -17,5 +17,5 @@ app.use('/',webRoutes)
 
 
 app.listen(port, hostname, () => {
-    console.log(`Example app listening on http://${hostname}:${port}/`)
+    console.log(`App running on http://${hostname}:${port}/`)
 })
