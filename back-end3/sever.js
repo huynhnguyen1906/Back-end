@@ -1,8 +1,8 @@
 require('dotenv').config();
-const express = require('express') //commonjs
+const express = require('express'); //commonjs
 const configViewEngine = require('./src/config/viewEngine');
-const webRoutes = require('./src/routes/web')
-const mysql = require('mysql2')
+const webRoutes = require('./src/routes/web');
+// const connection = require('./src/config/database'); //import connection
 //import express from 'express'; // es module
 
 const app = express() // app express
@@ -17,23 +17,15 @@ configViewEngine(app);
 app.use('/',webRoutes)
 
 
-//test connection 
-//create the connection to database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: '123456',
-    database: 'huynhnguyen'
-});
 
-connection.query(
-    'SELECT *FROM Users u',
-    function (err, results, fields) {
-        console.log('>>>results:',results);
-        console.log('>>>fields:',fields);
-    }
-)
+//test connection 
+// connection.query(
+//     'SELECT *FROM Users u',
+//     function (err, results, fields) {
+//         console.log('>>>results:',results);
+//         // console.log('>>>fields:',fields);
+//     }
+// )
 
 
 
