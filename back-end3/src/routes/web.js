@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {getHomepage, getSample} = require('../controllers/homeController');
+const {getLandingPage, getHomePage} = require('../controllers/homeController');
 
 
 //  router.Method('/route', handler)
 
-router.get('/', getHomepage);
-router.get('/sample', getSample) ;
-
+router.get('/', getLandingPage);
+router.get('/home', getHomePage) ;
 
 module.exports = router;
