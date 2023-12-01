@@ -1,10 +1,15 @@
+
 body {
-    background-color: aqua;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
 }
 header {
     width: 100%;
     height: auto;
-    background-color: #fff;
 }
 a {
     text-decoration: none;
@@ -36,4 +41,25 @@ nav > ul > li > a {
 nav > ul > li > a:hover {
     color: #fff;
     background-color: #000;
+}
+
+input {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #000;
+    margin: 20px;
+    border-radius: 15px;
+    padding: 5px;
+}
+fieldset {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+}
+button {
+    width: 75px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 7px;
 }

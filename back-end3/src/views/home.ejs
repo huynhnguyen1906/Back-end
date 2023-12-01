@@ -18,5 +18,28 @@
             </ul>
         </nav>
     </header>
+    <main>
+        <div class="form">
+            <form action="/create-user" method="post">
+                <fieldset>
+                    <legend>Add new user</legend>
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="City">City:</label>
+                        <input type="text" name="city" id="City" placeholder="Enter your City">
+                    </div>
+                    <br>
+                    <button type="submit" id="submit" >Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

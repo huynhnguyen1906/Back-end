@@ -7,7 +7,13 @@ const getLandingPage = (req, res) => {
 const getHomePage = (req, res) => {
     res.render('home.ejs')
 }
+
+const postCreateUser = (req, res) => {
+    console.log( '>>>> req.body: ', req.body);
+    res.send('Create a new user')
+}
 module.exports = {
     getLandingPage,
-    getHomePage
+    getHomePage,
+    postCreateUser
 }
