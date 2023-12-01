@@ -11,35 +11,28 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
+                <li><a class="active" href="/home">HOME</a></li>
+                <li><a href="/create-user">CREATE</a></li>
                 <li><a href="#">CONTACT</a></li>
                 <li><a href="/">LANDING PAGE</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="form">
-            <form action="/create-user" method="post">
-                <fieldset>
-                    <legend>Add new user</legend>
-                    <div class="input-group">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Enter your name">
-                    </div>
-                    <div class="input-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Enter your email">
-                    </div>
-                    <div class="input-group">
-                        <label for="City">City:</label>
-                        <input type="text" name="city" id="City" placeholder="Enter your City">
-                    </div>
-                    <br>
-                    <button type="submit" id="submit" >Submit</button>
-                </fieldset>
-            </form>
-        </div>
+        <h1>List user</h1>
+        <table id="customers">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Germany</td>
+            </tr>
     </main>
 </body>
 </html>
