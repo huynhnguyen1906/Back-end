@@ -73,7 +73,7 @@ main > h1 {
 
 }
 #customers {
-    margin: 50px auto 0 auto;
+    margin: 0 auto 0 auto;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 50%;

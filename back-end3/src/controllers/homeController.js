@@ -1,11 +1,15 @@
 const connection = require('../config/database');
+const { getAllUsers } = require('../services/CRUDService');
 
 const getLandingPage = (req, res) => {
+    
+
     res.render('landing.ejs')
 }
 
-const getHomePage = (req, res) => {
-    res.render('home.ejs')
+const getHomePage = async (req, res) => {
+    let result = await getAllUsers();
+    res.render('home.ejs', {users: result})
 }
 
 const getCreateUser = (req, res) => {
@@ -25,8 +29,6 @@ const postCreateUser = async (req, res) => {
 
     let [result, fields] = await connection.query(sql);
 
-    console.log('>>>> result ', result);
-    
     res.send('Create a new user')
 
 }
