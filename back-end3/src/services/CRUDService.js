@@ -6,7 +6,7 @@ const getAllUsers = async () => {
 
     let [result, fields] = await connection.query(sql);
 
-    return JSON.stringify(result);
+    return result;
 }
 
 module.exports = {

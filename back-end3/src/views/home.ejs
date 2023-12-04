@@ -20,20 +20,26 @@
     </header>
     <main>
         <h1>List user</h1>
-        <%= users %>
         <table id="customers">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Country</th>
+                <th>City</th>
+                <th>Action</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>Germany</td>
-            </tr>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.city %></td>
+                    <td>
+                        <button>Delete</button>
+                        <button>Edit</button>
+                    </td>
+                </tr>
+            <% }) %>
     </main>
 </body>
 </html>

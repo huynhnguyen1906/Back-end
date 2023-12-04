@@ -99,3 +99,12 @@ main > h1 {
 #customers th:nth-child(1) {
     width: 10%;
 }
+#customers td:nth-child(5) {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+}
+#customers td:nth-child(5) > button:hover {
+    background-color: #000;
+    color: #fff;
+}
