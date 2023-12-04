@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Delete USER</title>
+    <link rel="stylesheet" href="/css/ress.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/home">HOME</a></li>
+                <li><a href="/create-user">CREATE</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="/">LANDING PAGE</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="form">
+            <form action="/delete-user/" method="post">
+                <fieldset>
+                    <legend>Delete user</legend>
+                    <div class="input-group d-none">
+                        <label for="id">Id:</label>
+                        <input type="text" name="id" id="id" placeholder="Enter your id" value="<%= user.id  %>">
+                    </div>
+                    <div class="input-group">
+                        <p>Are you sure delete user with name: <span><%= user.name  %></span></p>
+                    </div>  
+                    <br>
+                    <button type="submit" id="submit" >Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
