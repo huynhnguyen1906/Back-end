@@ -60,6 +60,9 @@ fieldset {
     margin: 0 auto;
     padding: 20px;
 }
+.d-none{
+    display: none;
+}
 button {
     width: 75px;
     height: 30px;
@@ -106,6 +109,8 @@ main > h1 {
 }
 #customers td:nth-child(5) > button:hover {
     background-color: #000;
+}
+#customers td:nth-child(5) > button:hover > a {
     color: #fff;
 }
 #customers td:nth-child(5) > button > a {

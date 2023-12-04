@@ -20,20 +20,24 @@
     </header>
     <main>
         <div class="form">
-            <form action="/create-user" method="post">
+            <form action="/edit-user" method="post">
                 <fieldset>
                     <legend>Edit user information</legend>
+                    <div class="input-group d-none">
+                        <label for="id">Id:</label>
+                        <input type="text" name="id" id="id" placeholder="Enter your id" value="<%= user.id  %>">
+                    </div>
                     <div class="input-group">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Enter your name">
+                        <input type="text" name="name" id="name" placeholder="Enter your name" value="<%= user.name  %>">
                     </div>
                     <div class="input-group">
                         <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Enter your email">
+                        <input type="text" name="email" id="email" placeholder="Enter your email" value="<%= user.email  %>">
                     </div>
                     <div class="input-group">
                         <label for="City">City:</label>
-                        <input type="text" name="city" id="City" placeholder="Enter your City">
+                        <input type="text" name="city" id="City" placeholder="Enter your City" value="<%= user.city  %>">
                     </div>
                     <br>
                     <button type="submit" id="submit" >Submit</button>
