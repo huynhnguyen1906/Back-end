@@ -5,6 +5,7 @@ const getLandingPage = (req, res) => {
     res.render('landing.ejs')
 }
 const getEditUser = (req, res) => {
+    console.log(req.params);
     res.render('edit.ejs')
 }
 

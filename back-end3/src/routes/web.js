@@ -9,6 +9,6 @@ router.get('/', getLandingPage);
 router.get('/home', getHomePage);
 router.post('/create-user', postCreateUser);
 router.get('/create-user', getCreateUser);
-router.get('/edit-user', getEditUser);
+router.get('/edit-user/:id', getEditUser);
 
 module.exports = router;
