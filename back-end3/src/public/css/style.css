@@ -1,0 +1,113 @@
+html {
+	font-size: 62.5%;
+	background: #000;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	padding: 10px;
+	width: 390px;
+	height: 844px;
+	font-size: 1.6rem;
+	margin: 30px auto 0 auto;
+	background: #fff;
+	position: relative;
+}
+.start-btn {
+	width: 150px;
+	height: 50px;
+	border: #000 solid 1px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.countdown-time {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: none;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+.countdown-time > .timer {
+	font-size: 10rem;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	border-radius: 50%;
+	border: #000 solid 1px;
+}
+.quiz-container {
+	margin-top: 8.8rem;
+	display: none;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+.quiz-header {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 27px;
+}
+.quiz-header > .timer {
+	width: 80px;
+	height: 40px;
+	border: #000 solid 1px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	letter-spacing: 3px;
+}
+.quiz-content {
+	transition: opacity 0.15s ease-in-out;
+}
+.question-box {
+	width: 35.8rem;
+	height: 23.6rem;
+	display: block;
+	border-radius: 2.9rem;
+	background: #d9d9d9;
+	padding: 0 20px 20px 20px;
+	position: relative;
+	overflow: auto;
+}
+.question-box::-webkit-scrollbar {
+	display: none;
+}
+.answer-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 48px;
+}
+.answer {
+	width: 35.8rem;
+	height: 5.4rem;
+	padding: 2px 6px 2px 6px;
+	margin-bottom: 18px;
+	border-radius: 1.5rem;
+	background: #d9d9d9;
+	font-size: 13px;
+}
+.clear-noti-box {
+	width: auto;
+	height: auto;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}

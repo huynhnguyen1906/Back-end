@@ -9,6 +9,13 @@ const {
 	postEditUser,
 	getDeleteUser,
 	postDeleteUser,
+	getCreateQuestion,
+	postCreateQuestion,
+	getEditQuestion,
+	postEditQuestion,
+	postDeleteQuestion,
+	getDeleteQuestion,
+	getQuizPage,
 } = require("../controllers/homeController")
 
 //  router.Method('/route', handler)
@@ -21,5 +28,12 @@ router.get("/edit-user/:id", getEditUser)
 router.post("/edit-user", postEditUser)
 router.get("/delete-user/:id", getDeleteUser)
 router.post("/delete-user/", postDeleteUser)
+router.get("/create-question", getCreateQuestion)
+router.post("/create-question", postCreateQuestion)
+router.get("/edit-question/:id", getEditQuestion)
+router.post("/edit-question", postEditQuestion)
+router.get("/delete-question/:id", getDeleteQuestion)
+router.post("/delete-question/", postDeleteQuestion)
+router.get("/quiz", getQuizPage)
 
 module.exports = router

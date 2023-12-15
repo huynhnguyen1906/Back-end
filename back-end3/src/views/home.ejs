@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=], initial-scale=1.0">
-    <title>HOME</title>
-    <link rel="stylesheet" href="/css/ress.css">
-    <link rel="stylesheet" href="/css/home.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="active" href="/home">HOME</a></li>
-                <li><a href="/create-user">CREATE</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="/">LANDING PAGE</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>List user</h1>
-        <table id="customers">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>City</th>
-                <th>Action</th>
-            </tr>
-            <% users.forEach(user => { %>
-                <tr>
-                    <td><%= user.id %></td>
-                    <td><%= user.name %></td>
-                    <td><%= user.email %></td>
-                    <td><%= user.city %></td>
-                    <td>
-                        <button><a href="/delete-user/<%= user.id %>">Delete</a></button>
-                        <button><a href="/edit-user/<%= user.id %>">Edit</a></button>
-                    </td>
-                </tr>
-            <% }) %>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=], initial-scale=1.0" />
+		<title>HOME</title>
+		<link rel="stylesheet" href="/css/ress.css" />
+		<link rel="stylesheet" href="/css/home.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a class="active" href="/home">HOME</a></li>
+					<li><a href="/create-user">CREATE</a></li>
+					<li><a href="/create-question">Create-question</a></li>
+					<li><a href="/">LANDING PAGE</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1>List user</h1>
+			<table id="customers">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>City</th>
+					<th>Action</th>
+				</tr>
+				<% users.forEach(user => { %>
+				<tr>
+					<td><%= user.id %></td>
+					<td><%= user.name %></td>
+					<td><%= user.email %></td>
+					<td><%= user.city %></td>
+					<td>
+						<button><a href="/delete-user/<%= user.id %>">Delete</a></button>
+						<button><a href="/edit-user/<%= user.id %>">Edit</a></button>
+					</td>
+				</tr>
+				<% }) %>
+			</table>
+			<table id="customers2">
+				<tr>
+					<th>Question</th>
+					<th>Answer 1</th>
+					<th>Answer 2</th>
+					<th>Answer 3</th>
+					<th>Answer 4</th>
+					<th>Correct answer</th>
+					<th>Action</th>
+				</tr>
+				<% Quiz.forEach(Quiz => { %>
+				<tr>
+					<td><%= Quiz.question %></td>
+					<td><%= Quiz.answer_1 %></td>
+					<td><%= Quiz.answer_2 %></td>
+					<td><%= Quiz.answer_3 %></td>
+					<td><%= Quiz.answer_4 %></td>
+					<td><%= Quiz.correct_answer %></td>
+					<td>
+						<button>
+							<a href="/delete-question/<%= Quiz.id %>">Delete</a>
+						</button>
+						<button><a href="/edit-question/<%= Quiz.id %>">Edit</a></button>
+					</td>
+				</tr>
+				<% }) %>
+			</table>
+		</main>
+	</body>
 </html>

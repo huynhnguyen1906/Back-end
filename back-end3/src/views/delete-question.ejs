@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=], initial-scale=1.0" />
-		<title>Delete USER</title>
-		<link rel="stylesheet" href="/css/ress.css" />
+		<title>DELETE QUESTION</title>
 		<link rel="stylesheet" href="/css/home.css" />
+		<link rel="stylesheet" href="/css/create-quest.css" />
 	</head>
 	<body>
 		<header>
@@ -13,16 +13,16 @@
 				<ul>
 					<li><a href="/home">HOME</a></li>
 					<li><a href="/create-user">CREATE</a></li>
-					<li><a href="/create-question">Create-question</a></li>
+					<li><a class="active" href="/#">CREATE QUESTION</a></li>
 					<li><a href="/">LANDING PAGE</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<div class="form">
-				<form action="/delete-user/" method="post">
+				<form action="/delete-question" method="post">
 					<fieldset>
-						<legend>Delete user</legend>
+						<legend>Edit question</legend>
 						<div class="input-group d-none">
 							<label for="id">Id:</label>
 							<input
@@ -30,13 +30,13 @@
 								name="id"
 								id="id"
 								placeholder="Enter your id"
-								value="<%= user.id  %>"
+								value="<%= Quiz.id  %>"
 							/>
 						</div>
 						<div class="input-group">
 							<p>
-								Are you sure delete user with name:
-								<span><%= user.name %></span>
+								Are you sure delete question: <br />
+								<span><%= Quiz.question %></span>
 							</p>
 						</div>
 						<br />

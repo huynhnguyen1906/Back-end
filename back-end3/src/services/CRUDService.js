@@ -29,10 +29,61 @@ const deleteUserById = async (id) => {
 	let [results, fields] = await connection.query(sql)
 }
 
+const getAllQuestion = async () => {
+	let sql = `SELECT * FROM Quiz`
+	let [result, fields] = await connection.query(sql)
+	return result
+}
+
+const createQuestion = async (
+	question,
+	answer_1,
+	answer_2,
+	answer_3,
+	answer_4,
+	correct_answer
+) => {
+	let sql = `INSERT INTO Quiz (question,
+	answer_1,
+	answer_2,
+	answer_3,
+	answer_4,
+	correct_answer) VALUES ('${question}', '${answer_1}', '${answer_2}', '${answer_3}', '${answer_4}', '${correct_answer}')`
+	let [result, fields] = await connection.query(sql)
+}
+
+const getQuestionById = async (questionId) => {
+	let [results, fields] = await connection.query(
+		`SELECT * FROM Quiz WHERE id = ${questionId}`
+	)
+	let question = results && results.length > 0 ? results[0] : {}
+	return question
+}
+const updateQuestionById = async (
+	id,
+	question,
+	answer_1,
+	answer_2,
+	answer_3,
+	answer_4,
+	correct_answer
+) => {
+	let sql = `UPDATE Quiz SET question = '${question}', answer_1 = '${answer_1}', answer_2 = '${answer_2}', answer_3 = '${answer_3}', answer_4 = '${answer_4}', correct_answer = '${correct_answer}' WHERE id = ${id}`
+	let [result, fields] = await connection.query(sql)
+}
+const deleteQuestionById = async (id) => {
+	let sql = `DELETE FROM Quiz WHERE id = ${id}`
+	let [results, fields] = await connection.query(sql)
+}
 module.exports = {
 	getAllUsers,
 	getUserById,
 	updateUserById,
 	createUser,
 	deleteUserById,
+	createQuestion,
+	getAllQuestion,
+	getQuestionById,
+	deleteQuestionById,
+	updateQuestionById,
 }

@@ -1,0 +1,6 @@
+input {
+	height: auto;
+	padding: 10px;
+	box-sizing: border-box;
+	overflow-wrap: break-word;
+}
