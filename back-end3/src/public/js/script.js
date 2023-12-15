@@ -1,88 +1,67 @@
-const questions = [
-	{
-		question:
-			"HTTP/1.1プロトコルのリクエストメソッドの説明として正しくないのは次のうちどれか。",
-		answer_1: "HTMLのフォームで指定できるのはGETとPOSTのみである。",
-		answer_2:
-			"GETでは、リクエストパラメータはURLに含まれるが、POSTではボディに含まれる",
-		answer_3: "GETではデータサイズの制限があるが、POSTにはない。",
-		answer_4:
-			"GETリクエストに対しては、PUTリクエスト付きのレスポンスメッセージが戻る。",
-		correctAnswer:
-			"GETリクエストに対しては、PUTリクエスト付きのレスポンスメッセージが戻る。",
-	},
-	{
-		question: "Ajax と最も関連のない技術は次のうちどれか。",
-		answers: ["JavaScript", "JavaServerPages", "jQuery", "JSON"],
-		correctAnswer: "JavaServerPages",
-	},
-	{
-		question:
-			"次のうち、JavaScriptの変数の宣言で、変数の値を変更できないのはどれか。",
-		answers: ["const", "var", "let", "どれも変更できる"],
-		correctAnswer: "const",
-	},
-	{
-		question:
-			"価格を表示する箇所で円マーク(¥)を正しく表示できないのは次のうちどれか。 なお、文字セットは UTF8、フォントは arial、円マークの unicode 文字番号は10進表記で165とする。",
-		answers: ["&yen;", "&#165;", "&#&#xA5;", "¥"],
-		correctAnswer: "&#&#xA5;",
-	},
-	{
-		question:
-			"ウェブサイトのコンテンツを、一元的に管理する仕組みの名称として最もふさわしいものを選択してください。",
-		answers: ["Blog", "CMS", "リポジトリ", "データウェアハウス"],
-		correctAnswer: "CMS",
-	},
-	{
-		question: "文字（実体）参照として無効な記述を選択してください。",
-		answers: ["&amp;", "&#39;", "&#x266A;", "&0x1A;"],
-		correctAnswer: "&0x1A;",
-	},
-	{
-		question:
-			"HTML5のコンテンツ・モデル（Content models）において、セクショニング・コンテンツ（Sectioning content）である要素の組み合わせで適切なものはどれか。正しいものを1つ選びなさい。",
-		answers: [
-			"h1 h2 h3 h4 h5 h6",
-			"footer header main section",
-			"blockquote body fieldset figure td",
-			"article aside nav section",
-		],
-		correctAnswer: "article aside nav section",
-	},
-]
-
+const questions = []
 let currentQuestionIndex = 0
 let correctAnswersCount = 0
 let quizStarted = false
 let quizTimerInterval
-
-let questionOrder = shuffleArray([...Array(questions.length).keys()])
-
 let currentQuestionNumber = 1
+let questionOrder = []
+
+fetch("/api/questions")
+	.then((response) => {
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`)
+		}
+		return response.json()
+	})
+	.then((data) => {
+		// Cập nhật mảng questions với dữ liệu từ API
+		questions.push(...data)
+
+		// Cập nhật questionOrder sau khi dữ liệu đã được tải xong
+		questionOrder = shuffleArray([...Array(questions.length).keys()])
+
+		// Gọi hàm loadQuestions() hoặc thực hiện các bước khác tùy thuộc vào logic của ứng dụng
+		loadQuestions()
+	})
+	.catch((error) => {
+		console.error("Error fetching data from API:", error)
+	})
 
 function loadQuestions() {
+	if (questions.length === 0 || currentQuestionIndex >= questions.length) {
+		console.error("No questions loaded or index out of bounds.")
+		return
+	}
+
 	const questionIndex = questionOrder[currentQuestionIndex]
 	const currentQuestion = questions[questionIndex]
+
+	// Kiểm tra xem currentQuestion có tồn tại hay không
+	if (!currentQuestion || !currentQuestion.hasOwnProperty("question")) {
+		console.error("Invalid question data:", currentQuestion)
+		return
+	}
+
 	const questionNumberElement = document.querySelector(".q-number")
 	const questionElement = document.querySelector(".question")
 	const answerButtons = document.querySelectorAll(".answer")
 	const statusElement = document.querySelector(".status")
 
-	questionNumberElement.innerText = `Q${currentQuestionNumber}`
+	// Sử dụng questionIndex + 1 để hiển thị số câu hỏi hiện tại
+	questionNumberElement.innerText = `Q${questionIndex + 1}`
 	questionElement.innerText = currentQuestion.question
 	statusElement.innerText = `問数 ${currentQuestionIndex + 1}/${
 		questions.length
 	}`
 
-	const shuffledAnswers = shuffleArray(currentQuestion.answers)
+	const shuffledAnswers = shuffleArray([...currentQuestion.answers])
 	answerButtons.forEach((button, index) => {
 		button.innerText = shuffledAnswers[index]
 		button.removeEventListener("click", answerButtonClickHandler)
 		button.addEventListener("click", answerButtonClickHandler)
 	})
 
-	currentQuestionNumber++
+	// Không cần tăng giá trị của currentQuestionNumber ở đây
 }
 
 function shuffleArray(array) {
@@ -96,7 +75,8 @@ function shuffleArray(array) {
 
 function answerButtonClickHandler() {
 	const selectedAnswer = this.innerText
-	const currentQuestion = questions[questionOrder[currentQuestionIndex]] // Sửa đổi ở đây
+	const currentQuestion = questions[questionOrder[currentQuestionIndex]]
+
 	const quizContent = document.querySelector(".quiz-content")
 	setTimeout(() => {
 		quizContent.style.opacity = 0
@@ -104,7 +84,13 @@ function answerButtonClickHandler() {
 	setTimeout(() => {
 		quizContent.style.opacity = 1
 	}, 150)
-	checkAnswer(selectedAnswer, currentQuestion.correctAnswer)
+
+	function checkAnswer(selectedAnswer, correctAnswer) {
+		if (selectedAnswer === correctAnswer.toString()) {
+			correctAnswersCount++
+		}
+	}
+	checkAnswer(selectedAnswer, currentQuestion.correct_answer)
 	currentQuestionIndex++
 
 	if (currentQuestionIndex < questions.length) {
@@ -159,13 +145,6 @@ function startQuizTimer() {
 			const remainingSeconds = (seconds % 60).toString().padStart(2, "0")
 			timerElement.innerText = `${minutes}:${remainingSeconds}`
 		}, 1000)
-	}
-}
-
-function checkAnswer(selectedAnswer, correctAnswer) {
-	if (selectedAnswer === correctAnswer.toString()) {
-		// Sửa đổi ở đây
-		correctAnswersCount++
 	}
 }
 

@@ -15,23 +15,22 @@ app.use(express.json()) //for json data
 //config template engine and config static files
 configViewEngine(app)
 
-app.get("/api/questions", (req, res) => {
-	const query = "SELECT * FROM Quiz"
+app.get("/api/questions", async (req, res) => {
+	try {
+		const query = "SELECT * FROM Quiz"
+		const [rows] = await connection.execute(query)
 
-	connection.query(query, (err, rows) => {
-		if (err) {
-			console.error("Error querying database:", err)
-			res.status(500).send("Internal Server Error")
-		} else {
-			const questions = rows.map((row) => ({
-				question: row.question,
-				answers: [row.answer_1, row.answer_2, row.answer_3, row.answer_4],
-				correct_answer: row.correct_answer,
-			}))
+		const questions = rows.map((row) => ({
+			question: row.question,
+			answers: [row.answer_1, row.answer_2, row.answer_3, row.answer_4],
+			correct_answer: row.correct_answer,
+		}))
 
-			res.json(questions)
-		}
-	})
+		res.json(questions)
+	} catch (error) {
+		console.error("Error querying database:", error)
+		res.status(500).send("Internal Server Error")
+	}
 })
 
 //khai báo route
