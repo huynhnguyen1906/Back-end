@@ -8,11 +8,12 @@ html {
 body {
 	padding: 10px;
 	width: 390px;
-	height: 844px;
+	height: 720px;
 	font-size: 1.6rem;
-	margin: 30px auto 0 auto;
-	background: #fff;
+	background: #00154d;
 	position: relative;
+	color: #fff;
+	font-family: "Noto Sans JP", "sans-serif;";
 }
 .start-btn {
 	width: 150px;
@@ -22,6 +23,8 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	/* test */
+	display: none;
 }
 .countdown-time {
 	width: 100%;
@@ -44,7 +47,6 @@ body {
 	border: #000 solid 1px;
 }
 .quiz-container {
-	margin-top: 8.8rem;
 	display: none;
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out;
@@ -100,14 +102,75 @@ body {
 	font-size: 13px;
 }
 .clear-noti-box {
-	width: auto;
-	height: auto;
+	width: 100%;
+	height: 100%;
 	text-align: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	display: none;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
+	/* test */
+	opacity: 1;
+	display: block;
+}
+.clear-noti-box > .clear-noti {
+	font-size: 2rem;
+	font-weight: 500;
+}
+.clear-noti-box p:nth-child(2) {
+	font-size: 3rem;
+	line-height: 40px;
+}
+.clear-noti-box p:nth-child(2) span {
+	color: #ff862f;
+	font-size: 6rem;
+	font-weight: 700;
+}
+.clear-noti-box p:nth-child(3) {
+	font-size: 1.4rem;
+}
+.favor-button {
+	width: 100%;
+	height: 80px;
+	border-radius: 1.5rem;
+	border: 2px solid #4b73a3;
+	background: #fff;
+	margin-top: 1.6rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.favor-button > p {
+	color: #4b73a3;
+	font-size: 1.7rem;
+}
+.favor-button::after {
+	content: "";
+	width: 24px;
+	height: 24px;
+	background-image: url("/images/heart.svg");
+	background-size: cover;
+	background-position: center;
+	margin-left: 0.8rem;
+}
+.answer-check-box {
+	width: 100%;
+	height: 34rem;
+	background-color: #253f72;
+	border: 1.5px solid #fff;
+	margin-top: 0.8rem;
+}
+.answer-check-box > .check-box-text {
+	font-size: 1.5rem;
+	padding: 16px 0 0 0;
+}
+.check-box {
+	width: 100%;
+	height: 22rem;
+	margin-top: 0.8rem;
+	padding: 0rem 7rem 0 7rem;
+	display: flex;
+}
+.check-box p {
+	font-size: 1.5rem;
 }

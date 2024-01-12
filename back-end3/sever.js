@@ -17,7 +17,7 @@ configViewEngine(app)
 
 app.get("/api/questions", async (req, res) => {
 	try {
-		const query = "SELECT * FROM Quiz"
+		const query = "SELECT * FROM Quiz ORDER BY RAND() LIMIT 10"
 		const [rows] = await connection.execute(query)
 
 		const questions = rows.map((row) => ({
