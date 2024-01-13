@@ -110,12 +110,12 @@ function answerButtonClickHandler() {
 	currentQuestionIndex++
 
 	if (currentQuestionIndex < questions.length) {
-		// console.log(
-		// 	"correctQuestions:",
-		// 	correctQuestions,
-		// 	"incorrectQuestions:",
-		// 	incorrectQuestions
-		// )
+		console.log(
+			"correctQuestions:",
+			correctQuestions,
+			"incorrectQuestions:",
+			incorrectQuestions
+		)
 		loadQuestions()
 	} else {
 		displayResult()
@@ -127,6 +127,17 @@ function displayResult() {
 	const clearTime = document.querySelector(".clear-time")
 	const clearQuest = document.querySelector(".clear-quest")
 	const clearTimeText = `${formatTime()}`
+	const checkElements = document.querySelectorAll(".check")
+	const questExplainBox = document.querySelector(".quest-explain-box")
+	const checkBoxes = document.querySelectorAll(".u-a")
+
+	for (let i = 0; i < checkElements.length; i++) {
+		if (correctQuestions.includes(i)) {
+			checkElements[i].textContent = "〇"
+		} else if (incorrectQuestions.includes(i)) {
+			checkElements[i].textContent = "✕"
+		}
+	}
 
 	clearInterval(quizTimerInterval)
 
@@ -139,6 +150,19 @@ function displayResult() {
 	setTimeout(() => {
 		clearNotiBox.style.opacity = 1
 	}, 200)
+
+	checkBoxes.forEach((box) => {
+		box.addEventListener("click", function (event) {
+			questExplainBox.style.display = "block"
+			event.stopPropagation()
+		})
+	})
+
+	document.addEventListener("click", function (event) {
+		if (!questExplainBox.contains(event.target)) {
+			questExplainBox.style.display = "none"
+		}
+	})
 }
 
 function formatTime() {

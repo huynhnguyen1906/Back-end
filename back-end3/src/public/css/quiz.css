@@ -262,6 +262,8 @@ body {
 	width: 34rem;
 	height: 58rem;
 	padding: 1.6rem;
+	border: 1.5px solid #00154d;
+	border-radius: 1.5rem;
 	background: #fafafa;
 	color: #00154d;
 	position: absolute;
@@ -269,6 +271,13 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
+}
+.close-button {
+	font-size: 3rem;
+	font-weight: 700;
+	position: absolute;
+	right: 5%;
+	top: 0%;
 }
 .e-answer-box {
 	display: flex;
@@ -288,8 +297,12 @@ body {
 	padding: 0 3rem 0 3rem;
 }
 .e-a-cr {
-	border: 1.5px solid #ff862f;
-	color: #00154d;
+	border: 1.5px solid #00ae37;
+	color: #00ae37;
+}
+.e-a-incr {
+	border: 1.5px solid #ff5757;
+	color: #ff5757;
 }
 .explain-box {
 	width: 100%;
