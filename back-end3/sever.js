@@ -24,6 +24,7 @@ app.get("/api/questions", async (req, res) => {
 			question: row.question,
 			answers: [row.answer_1, row.answer_2, row.answer_3, row.answer_4],
 			correct_answer: row.correct_answer,
+			explain: row.explain_text,
 		}))
 
 		res.json(questions)

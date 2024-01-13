@@ -50,6 +50,7 @@
 					<th>Answer 3</th>
 					<th>Answer 4</th>
 					<th>Correct answer</th>
+					<th>Explain</th>
 					<th>Action</th>
 				</tr>
 				<% Quiz.forEach(Quiz => { %>
@@ -60,6 +61,7 @@
 					<td><%= Quiz.answer_3 %></td>
 					<td><%= Quiz.answer_4 %></td>
 					<td><%= Quiz.correct_answer %></td>
+					<td><%= Quiz.explain_text %></td>
 					<td>
 						<button>
 							<a href="/delete-question/<%= Quiz.id %>">Delete</a>

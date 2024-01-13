@@ -41,14 +41,16 @@ const createQuestion = async (
 	answer_2,
 	answer_3,
 	answer_4,
-	correct_answer
+	correct_answer,
+	explain_text
 ) => {
 	let sql = `INSERT INTO Quiz (question,
 	answer_1,
 	answer_2,
 	answer_3,
 	answer_4,
-	correct_answer) VALUES ('${question}', '${answer_1}', '${answer_2}', '${answer_3}', '${answer_4}', '${correct_answer}')`
+	correct_answer,
+	explain_text) VALUES ('${question}', '${answer_1}', '${answer_2}', '${answer_3}', '${answer_4}', '${correct_answer}', '${explain_text}')`
 	let [result, fields] = await connection.query(sql)
 }
 
@@ -66,9 +68,10 @@ const updateQuestionById = async (
 	answer_2,
 	answer_3,
 	answer_4,
-	correct_answer
+	correct_answer,
+	explain_text
 ) => {
-	let sql = `UPDATE Quiz SET question = '${question}', answer_1 = '${answer_1}', answer_2 = '${answer_2}', answer_3 = '${answer_3}', answer_4 = '${answer_4}', correct_answer = '${correct_answer}' WHERE id = ${id}`
+	let sql = `UPDATE Quiz SET question = '${question}', answer_1 = '${answer_1}', answer_2 = '${answer_2}', answer_3 = '${answer_3}', answer_4 = '${answer_4}', correct_answer = '${correct_answer}', explain_text = '${explain_text}' WHERE id = ${id}`
 	let [result, fields] = await connection.query(sql)
 }
 const deleteQuestionById = async (id) => {

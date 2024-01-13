@@ -69,8 +69,15 @@ const getCreateQuestion = (req, res) => {
 }
 
 const postCreateQuestion = async (req, res) => {
-	let { question, answer_1, answer_2, answer_3, answer_4, correct_answer } =
-		req.body
+	let {
+		question,
+		answer_1,
+		answer_2,
+		answer_3,
+		answer_4,
+		correct_answer,
+		explain_text,
+	} = req.body
 
 	await createQuestion(
 		question,
@@ -78,7 +85,8 @@ const postCreateQuestion = async (req, res) => {
 		answer_2,
 		answer_3,
 		answer_4,
-		correct_answer
+		correct_answer,
+		explain_text
 	)
 	res.redirect("/create-question")
 }
@@ -90,8 +98,16 @@ const getEditQuestion = async (req, res) => {
 }
 
 const postEditQuestion = async (req, res) => {
-	let { id, question, answer_1, answer_2, answer_3, answer_4, correct_answer } =
-		req.body
+	let {
+		id,
+		question,
+		answer_1,
+		answer_2,
+		answer_3,
+		answer_4,
+		correct_answer,
+		explain_text,
+	} = req.body
 
 	await updateQuestionById(
 		id,
@@ -100,7 +116,8 @@ const postEditQuestion = async (req, res) => {
 		answer_2,
 		answer_3,
 		answer_4,
-		correct_answer
+		correct_answer,
+		explain_text
 	)
 
 	// res.send('User updated successfully');
