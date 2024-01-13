@@ -1,6 +1,7 @@
 const questions = []
 let correctQuestions = []
 let incorrectQuestions = []
+let incorrectAnswersText = []
 let currentQuestionIndex = 0
 let correctAnswersCount = 0
 let quizStarted = false
@@ -8,27 +9,27 @@ let quizTimerInterval
 let currentQuestionNumber = 1
 let questionOrder = []
 
-fetch("/api/questions")
-	.then((response) => {
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`)
-		}
-		return response.json()
-	})
-	.then((data) => {
-		// Cập nhật mảng questions với dữ liệu từ API
-		questions.push(...data)
+window.onload = function () {
+	fetch("/api/questions")
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`)
+			}
+			return response.json()
+		})
+		.then((data) => {
+			let shuffledData = shuffleArray(data)
+			questions.push(...shuffledData)
 
-		// Cập nhật questionOrder sau khi dữ liệu đã được tải xong
-		questionOrder = shuffleArray([...Array(questions.length).keys()])
+			questionOrder = questions.slice()
 
-		// Gọi hàm loadQuestions() hoặc thực hiện các bước khác tùy thuộc vào logic của ứng dụng
-		loadQuestions()
-	})
-	.catch((error) => {
-		console.error("Error fetching data from API:", error)
-	})
-
+			loadQuestions()
+		})
+		.catch((error) => {
+			console.error("Error fetching data from API:", error)
+		})
+}
+console.log(questions)
 function loadQuestions() {
 	if (questions.length === 0 || currentQuestionIndex >= questions.length) {
 		console.error("No questions loaded or index out of bounds.")
@@ -92,6 +93,7 @@ function answerButtonClickHandler() {
 			correctAnswersCount++
 			return { correct: true, questionIndex }
 		} else {
+			incorrectAnswersText.push(selectedAnswer)
 			return { correct: false, questionIndex }
 		}
 	}
@@ -114,8 +116,11 @@ function answerButtonClickHandler() {
 			"correctQuestions:",
 			correctQuestions,
 			"incorrectQuestions:",
-			incorrectQuestions
+			incorrectQuestions,
+			"incorrectAnswersText:",
+			incorrectAnswersText
 		)
+
 		loadQuestions()
 	} else {
 		displayResult()
@@ -130,6 +135,7 @@ function displayResult() {
 	const checkElements = document.querySelectorAll(".check")
 	const questExplainBox = document.querySelector(".quest-explain-box")
 	const checkBoxes = document.querySelectorAll(".u-a")
+	const closeBtn = document.querySelector(".close-button")
 
 	for (let i = 0; i < checkElements.length; i++) {
 		if (correctQuestions.includes(i)) {
@@ -151,13 +157,41 @@ function displayResult() {
 		clearNotiBox.style.opacity = 1
 	}, 200)
 
-	checkBoxes.forEach((box) => {
-		box.addEventListener("click", function (event) {
+	function updateQuestionDetails(i) {
+		let question = questions[i]
+
+		document.querySelector(".quest-explain-title").textContent = `Q${i + 1}`
+		document.querySelector(".quest-explain").textContent = question.question
+
+		const answerElements = document.querySelectorAll(".e-answer")
+		for (let j = 0; j < answerElements.length; j++) {
+			answerElements[j].classList.remove("e-a-cr", "e-a-incr")
+
+			answerElements[j].textContent = question.answers[j]
+
+			if (answerElements[j].textContent === question.correct_answer) {
+				answerElements[j].classList.add("e-a-cr")
+			}
+
+			if (incorrectAnswersText.includes(answerElements[j].textContent)) {
+				answerElements[j].classList.add("e-a-incr")
+			}
+		}
+
+		document.querySelector(".explain-text").textContent = question.explain
+	}
+
+	for (let i = 0; i < checkBoxes.length; i++) {
+		checkBoxes[i].addEventListener("click", function (event) {
 			questExplainBox.style.display = "block"
 			event.stopPropagation()
-		})
-	})
 
+			updateQuestionDetails(i)
+		})
+	}
+	closeBtn.addEventListener("click", function () {
+		questExplainBox.style.display = "none"
+	})
 	document.addEventListener("click", function (event) {
 		if (!questExplainBox.contains(event.target)) {
 			questExplainBox.style.display = "none"
@@ -181,7 +215,7 @@ function startQuizTimer() {
 		seconds = 0
 		quizTimerInterval = setInterval(function () {
 			seconds++
-			const timerElement = document.querySelector(".timer") // Thêm dòng này để lấy đúng element
+			const timerElement = document.querySelector(".timer")
 			const minutes = Math.floor(seconds / 60)
 				.toString()
 				.padStart(2, "0")
