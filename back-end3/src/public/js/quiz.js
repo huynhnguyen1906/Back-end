@@ -7,7 +7,6 @@ let correctAnswersCount = 0
 let quizStarted = false
 let quizTimerInterval
 let currentQuestionNumber = 1
-let questionOrder = []
 
 window.onload = function () {
 	fetch("/api/questions")
@@ -21,8 +20,6 @@ window.onload = function () {
 			let shuffledData = shuffleArray(data)
 			questions.push(...shuffledData)
 
-			questionOrder = questions.slice()
-
 			loadQuestions()
 		})
 		.catch((error) => {
@@ -30,14 +27,14 @@ window.onload = function () {
 		})
 }
 console.log(questions)
+
 function loadQuestions() {
 	if (questions.length === 0 || currentQuestionIndex >= questions.length) {
 		console.error("No questions loaded or index out of bounds.")
 		return
 	}
 
-	const questionIndex = questionOrder[currentQuestionIndex]
-	const currentQuestion = questions[questionIndex]
+	const currentQuestion = questions[currentQuestionIndex]
 
 	// Kiểm tra xem currentQuestion có tồn tại hay không
 	if (!currentQuestion || !currentQuestion.hasOwnProperty("question")) {
@@ -78,7 +75,7 @@ function shuffleArray(array) {
 
 function answerButtonClickHandler() {
 	const selectedAnswer = this.innerText
-	const currentQuestion = questions[questionOrder[currentQuestionIndex]]
+	const currentQuestion = questions[currentQuestionIndex]
 
 	const quizContent = document.querySelector(".quiz-content")
 	setTimeout(() => {
