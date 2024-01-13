@@ -13,20 +13,74 @@ body {
 	color: #fafafa;
 	font-family: "Noto Sans JP", "sans-serif;";
 }
+.start-display {
+	padding: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.start-display .title {
+	width: 100%;
+	height: 12.3rem;
+	border: 1.5px solid #fafafa;
+	border-radius: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #253f72;
+}
+.start-display .title .img {
+	width: 10rem;
+	height: 9.5rem;
+	background-image: url("/images/htmllogo.png");
+	background-size: cover;
+	background-position: center;
+	margin-right: 2.4rem;
+}
+.text-box p {
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+.description {
+	width: 100%;
+	height: 6rem;
+	border: 1.5px solid #fafafa;
+	border-radius: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 4rem 0 4rem;
+	margin-top: 0.8rem;
+	background-color: #253f72;
+}
+.description p {
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+.char-img {
+	width: 11.7rem;
+	height: 13.8rem;
+	background-image: url("/images/char-img.png");
+	background-size: cover;
+	background-position: center;
+	margin-top: 2.4rem;
+	margin-bottom: 2.4rem;
+}
 .start-btn {
-	width: 150px;
-	height: 50px;
-	border: #000 solid 1px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	width: 30rem;
+	height: 8rem;
+	border-radius: 1.5rem;
+	border: 2px solid #253f72;
+	background: #fafafa;
+	box-shadow: 2px 4px 0px 0px #4b73a3;
+	font-size: 2rem;
+	font-weight: 700;
+	color: #253f72;
 	/* test */
-	display: none;
+	/* display: none; */
 }
 .countdown-time {
-	width: 100%;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -34,6 +88,14 @@ body {
 	display: none;
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.countdown-time > .title {
+	font-size: 3rem;
+	margin-bottom: 1.6rem;
 }
 .countdown-time > .timer {
 	font-size: 10rem;
@@ -42,12 +104,14 @@ body {
 	text-align: center;
 	line-height: 200px;
 	border-radius: 50%;
-	border: #000 solid 1px;
+	border: #fafafa solid 1.5px;
+	color: #fafafa;
 }
 .quiz-container {
 	display: none;
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out;
+	/* test */
 }
 .quiz-header {
 	width: 100%;
@@ -79,6 +143,7 @@ body {
 	padding: 0 20px 20px 20px;
 	position: relative;
 	overflow: auto;
+	border: 1.5px solid #fafafa;
 }
 .question-box::-webkit-scrollbar {
 	display: none;
@@ -99,6 +164,7 @@ body {
 	background: #253f72;
 	font-size: 13px;
 	color: #fafafa;
+	border: 1.5px solid #fafafa;
 }
 .clear-noti-box {
 	width: 100%;
