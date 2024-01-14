@@ -34,6 +34,6 @@ router.get("/edit-question/:id", getEditQuestion)
 router.post("/edit-question", postEditQuestion)
 router.get("/delete-question/:id", getDeleteQuestion)
 router.post("/delete-question/", postDeleteQuestion)
-router.get("/quiz", getQuizPage)
+router.get("/quiz-start", getQuizPage)
 
 module.exports = router

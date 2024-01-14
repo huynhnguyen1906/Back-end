@@ -137,7 +137,7 @@ const postDeleteQuestion = async (req, res) => {
 }
 
 const getQuizPage = (req, res) => {
-	res.render("quiz.ejs")
+	res.render("quiz-start.ejs")
 }
 
 module.exports = {
