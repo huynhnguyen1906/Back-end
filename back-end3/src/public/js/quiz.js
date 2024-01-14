@@ -224,9 +224,11 @@ function startQuizTimer() {
 
 const startBtn = document.querySelector(".start-btn")
 const startDisplay = document.querySelector(".start-display")
+const footer = document.querySelector("footer")
 startBtn.addEventListener("click", function () {
 	this.remove()
 	startDisplay.remove()
+	footer.remove()
 
 	let countdown = 3
 	const countdownBox = document.querySelector(".countdown-time")
