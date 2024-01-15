@@ -1,0 +1,107 @@
+@use "asset" as asset;
+@use "_footer";
+
+body {
+  background: asset.$baseColor;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: solid 2px asset.$baseColor;
+  background: asset.$mainColor;
+  figure {
+    margin-left: 24px;
+    margin-bottom: 8px;
+    width: 24px;
+    height: 21px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  h1 {
+    color: asset.$baseColor;
+    font-size: 1.6rem;
+    margin-left: 80px;
+    margin-bottom: 8px;
+  }
+}
+
+main {
+  width: 100%;
+  height: 564px;
+  h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: asset.$mainColor;
+    margin-left: 16px;
+    margin-top: 16px;
+  }
+  .section_wrap {
+    width: 358px;
+    height: 800px;
+    margin: 16px auto;
+    .section {
+      width: 100%;
+      height: 130px;
+      background-image: url("/public/img/wrap.svg");
+      margin-top: 16px;
+      padding-top: 16px;
+      padding-left: 40px;
+      figure {
+        width: 218px;
+        height: 10px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: asset.$basePale;
+        margin-top: 8px;
+      }
+      p {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: asset.$baseColor;
+      }
+      .score_wrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-top: 28px;
+        margin-right: 8px;
+        .sub {
+          font-size: 1rem;
+          font-weight: normal;
+          color: asset.$mainColor;
+        }
+        span {
+          display: block;
+          font-size: 1.6rem;
+          font-weight: normal;
+          color: asset.$mainColor;
+        }
+        figure {
+          width: 24px;
+          height: 24px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 80px;
+  position: fixed;
+}

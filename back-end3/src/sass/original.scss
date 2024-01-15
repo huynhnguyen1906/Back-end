@@ -1,0 +1,142 @@
+@use "asset" as asset;
+@use "_footer";
+
+body {
+  background: asset.$baseColor;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: solid 2px asset.$baseColor;
+  background: asset.$mainColor;
+  figure {
+    margin-left: 24px;
+    margin-bottom: 8px;
+    width: 24px;
+    height: 21px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  h1 {
+    color: asset.$baseColor;
+    font-size: 1.6rem;
+    margin-left: 64px;
+    margin-bottom: 8px;
+  }
+}
+
+main {
+  width: 100%;
+  height: 564px;
+  .btn_wrap {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    a {
+      display: block;
+      width: 50%;
+      height: 54px;
+      line-height: 54px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-align: center;
+      &.fav {
+        color: asset.$baseColor;
+        background: asset.$mainColor;
+      }
+      &.ori {
+        color: asset.$mainColor;
+        background: asset.$basePale;
+      }
+    }
+  }
+  .create_btn {
+    width: 358px;
+    height: 90px;
+    margin: 16px auto 0;
+    background: asset.$mainColor;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 2rem;
+      color: asset.$baseColor;
+      text-align: center;
+      padding-top: 16px;
+      p {
+        margin-top: 8px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: asset.$mainColor;
+    margin-left: 16px;
+    margin-top: 16px;
+  }
+  .section_wrap {
+    width: 358px;
+    height: 820px;
+    margin: 16px auto;
+    .section {
+      width: 100%;
+      height: 130px;
+      background-image: url("/public/img/wrap.svg");
+      margin-top: 16px;
+      padding-top: 8px;
+      h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: asset.$basePale;
+        margin-top: 8px;
+        margin-left: 40px;
+      }
+      p {
+        font-size: 1rem;
+        font-weight: bold;
+        color: asset.$baseColor;
+        margin-left: 40px;
+      }
+      .title {
+        width: 320px;
+        height: 35px;
+        line-height: 35px;
+        background: #e9f3ff;
+        text-align: center;
+        margin-top: 8px;
+        margin-left: 16px;
+      }
+      .score_wrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+        margin-right: 8px;
+        .sub {
+          font-size: 1rem;
+          font-weight: normal;
+          color: asset.$mainColor;
+        }
+        span {
+          display: block;
+          font-size: 1.6rem;
+          font-weight: normal;
+          color: asset.$mainColor;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 80px;
+  position: fixed;
+}

@@ -1,0 +1,70 @@
+@use "asset" as asset;
+@use "_footer";
+
+body {
+  background: asset.$baseColor;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: solid 2px asset.$baseColor;
+  background: asset.$mainColor;
+  figure {
+    margin-left: 24px;
+    margin-bottom: 8px;
+    width: 24px;
+    height: 21px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  h1 {
+    color: asset.$baseColor;
+    font-size: 1.6rem;
+    margin-left: 120px;
+    margin-bottom: 8px;
+  }
+}
+
+main {
+  width: 100%;
+  height: 564px;
+  margin-top: 64px;
+  .button_wrap {
+    p {
+      width: 358px;
+      height: 160px;
+      margin: 0 auto;
+      text-align: center;
+      background: asset.$mainColor;
+      background-image: url("/public/img/button_bg.png");
+      margin-bottom: 24px;
+      border-radius: 15px;
+      position: relative;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 160px;
+        font-size: 2.2rem;
+        color: asset.$baseColor;
+        font-weight: bold;
+        background-color: rgba(asset.$mainColor, 0.8);
+        border-radius: 15px;
+      }
+      img {
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 0;
+}

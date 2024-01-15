@@ -1,0 +1,101 @@
+@use "asset" as asset;
+@use "_footer";
+
+body {
+  background: asset.$baseColor;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: solid 2px asset.$baseColor;
+  background: asset.$mainColor;
+  figure {
+    margin-left: 24px;
+    margin-bottom: 8px;
+    width: 24px;
+    height: 21px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  h1 {
+    color: asset.$baseColor;
+    font-size: 1.6rem;
+    margin-left: 88px;
+    margin-bottom: 8px;
+  }
+}
+
+main {
+  width: 100%;
+  height: 564px;
+  .top_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      width: 90px;
+      height: 70px;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: asset.$mainColor;
+      margin: 16px;
+    }
+    .ham {
+      width: 64px;
+      height: 60px;
+      margin-bottom: 8px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .section_wrap {
+    width: 358px;
+    height: 870px;
+    margin: 0 auto;
+    background: asset.$mainColor;
+    .section {
+      width: 100%;
+      height: 112px;
+      background: asset.$mainColor;
+      padding: 16px;
+      &:nth-child(2n) {
+        background: #e9f3ff;
+      }
+      .flex_wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        h3 {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: asset.$baseColor;
+        }
+        figure {
+          width: 214px;
+          height: 30px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        color: asset.$baseColor;
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 80px;
+  position: fixed;
+}

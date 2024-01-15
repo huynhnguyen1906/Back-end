@@ -1,25 +1,32 @@
 {
-  "name": "back-end3",
-  "version": "1.0.0",
-  "description": "create sever with express js",
-  "main": "sever.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon sever.js"
-  },
-  "keywords": [
-    "express.js",
-    "react"
-  ],
-  "author": "HuynhNguyen1906",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "16.0.3",
-    "ejs": "3.1.8",
-    "express": "4.18.2",
-    "mysql2": "2.3.3"
-  },
-  "devDependencies": {
-    "nodemon": "2.0.20"
-  }
+	"name": "back-end3",
+	"version": "1.0.0",
+	"description": "create sever with express js",
+	"main": "sever.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon sever.js"
+	},
+	"keywords": [
+		"express.js",
+		"react"
+	],
+	"author": "HuynhNguyen1906",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "16.0.3",
+		"ejs": "3.1.8",
+		"express": "4.18.2",
+		"mysql2": "2.3.3",
+		"gulp": "^4.0.2"
+	},
+	"devDependencies": {
+		"nodemon": "2.0.20",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-notify": "^4.0.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-sass": "^5.1.0",
+		"gulp-sourcemaps": "^3.0.0",
+		"sass": "^1.62.0"
+	}
 }
