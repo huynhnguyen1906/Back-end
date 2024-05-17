@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script>
+			window.onload = function () {
+				fetch("http://localhost:8080/users")
+					.then((response) => response.json())
+					.then((data) => {
+						const p = document.createElement("p");
+						p.textContent = `Username: ${data[0].user_name}, DOB: ${new Date(
+							data[0].dob
+						).toLocaleDateString()}, Country: ${data[0].country}`;
+						document.body.appendChild(p);
+					})
+					.catch((error) => console.error("Error:", error));
+			};
+		</script>
+	</head>
+	<body></body>
+</html>
